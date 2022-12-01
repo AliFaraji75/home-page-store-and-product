@@ -1,0 +1,63 @@
+
+
+var countDowndate= new Date("May 1 , 2023  15:37:10").getTime();
+
+
+var x = setInterval(function(){
+    var now =new Date().getTime();
+  var distance = countDowndate - now;
+
+  var days = Math.floor(distance/(1000* 60 * 60 *24));
+  var hours = Math.floor((distance%(1000* 60 * 60 *24)) /(1000 * 60 *60));
+  var minutes = Math.floor((distance%(1000* 60 * 60 ) )/(1000*60));
+  var secounds = Math.floor((distance%(1000* 60 )) /(1000 ));
+
+document.getElementById("demo").innerHTML= '<span id="days">' + days +'</span>' + '<span id="hours">' + hours +'</span>'+'<span id="minutes">' + minutes +'</span>'+'<span id="secounds">' + secounds +'</span>';
+document.getElementById("offer-expire-inner").style.display= "none";
+if(distance<0){
+    clearInterval(x);
+    document.getElementById("offer-expire-inner").style.display= "block";
+    document.getElementById("ofter-expire-text").setAttribute("id","offer-expire");
+    document.getElementById("offer-expire-inner").innerHTML= 'پیشنهاد ویژه این محصول به پایان رسیده';
+    document.getElementById("demo").innerHTML= "";
+    document.getElementById("offer-blur").style.filter="blur(2px)";
+}
+ 
+},100);
+$('.owl-carousel').owlCarousel({
+  
+  rtl:true,
+ 
+  autoplay:true,
+  autoplayTimeout:3000,
+  loop:true,
+  margin:10,
+  nav:true,
+  dots:true,
+  autoplayHoverPause:true,
+  animateOut:true,
+ 
+  animateOut: 'fadeOut',
+
+    responsive:{
+        0:{
+          
+          items:1
+      },
+      579:{
+        
+               items:2
+         },
+       768:{
+    center: true,
+           items:4
+     },
+      1000:{
+    center: true,
+          items:4
+  }
+    }
+})
+$('.tt').tooltip('show');
+$('.po').popover('show');
+$('.tot').toast('show');
